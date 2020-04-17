@@ -23,6 +23,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.android.navigation.databinding.FragmentGameBinding
 
 class GameFragment : Fragment() {
@@ -98,22 +99,25 @@ class GameFragment : Fragment() {
                         setQuestion()
                         binding.invalidateAll()
                     } else {
-                        val fragment = GameWonFragment()
+                        view.findNavController()
+                                .navigate(R.id.action_gameFragment_to_gameWonFragment)
+                        /*val fragment = GameWonFragment()
                         val fragmentManager = activity!!.supportFragmentManager
                         val fragmentTransaction = fragmentManager.beginTransaction()
                         fragmentTransaction.replace(R.id.contaner, fragment)
                         fragmentTransaction.addToBackStack(null)
                         fragmentTransaction.commit()
-                        // We've won!  Navigate to the gameWonFragment.
+                        // We've won!  Navigate to the gameWonFragment.*/
                     }
                 } else {
-                    val fragment = GameOverFragment()
+                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
+                    /*val fragment = GameOverFragment()
                     val fragmentManager = activity!!.supportFragmentManager
                     val fragmentTransaction = fragmentManager.beginTransaction()
                     fragmentTransaction.replace(R.id.contaner, fragment)
                     fragmentTransaction.addToBackStack(null)
                     fragmentTransaction.commit()
-                    // Game over! A wrong answer sends us to the gameOverFragment.
+                    // Game over! A wrong answer sends us to the gameOverFragment.*/
                 }
             }
         }

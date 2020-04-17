@@ -2,13 +2,11 @@ package com.example.android.navigation
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.databinding.Bindable
+import android.view.*
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.FragmentTitleBinding
 
 /**
@@ -19,20 +17,31 @@ class TitleFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding = DataBindingUtil.inflate<FragmentTitleBinding>(inflater,R.layout.fragment_title,container,false)
-
+        setHasOptionsMenu(true)
         val btn = binding.playButton
 
-        btn.setOnClickListener {
-            val fragment = GameFragment()
+        btn.setOnClickListener { view: View ->
+            view.findNavController().navigate(R.id.action_titleFragment_to_gameFragment)
+            /*val fragment = GameFragment()
             val fragmentManager = activity!!.supportFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.contaner, fragment)
             fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+            fragmentTransaction.commit()*/
         }
 
         return binding.root
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.options_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item,
+                view!!.findNavController())
+                || super.onOptionsItemSelected(item)
+    }
 
 }

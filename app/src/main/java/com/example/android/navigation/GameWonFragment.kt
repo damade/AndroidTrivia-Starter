@@ -22,8 +22,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.android.navigation.databinding.FragmentGameWonBinding
-
 
 class GameWonFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -32,14 +32,19 @@ class GameWonFragment : Fragment() {
         val binding: FragmentGameWonBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_game_won, container, false)
         val btn = binding.nextMatchButton
-        btn.setOnClickListener {
-            val fragment = TitleFragment()
-            val fragmentManager = activity!!.supportFragmentManager
-            val fragmentTransaction = fragmentManager.beginTransaction()
-            fragmentTransaction.replace(R.id.contaner, fragment)
-            fragmentTransaction.addToBackStack(null)
-            fragmentTransaction.commit()
+
+        binding.nextMatchButton.setOnClickListener { view: View ->
+            view.findNavController()
+                    .navigate(R.id.action_gameWonFragment_to_gameFragment)
         }
+        /*btn.setOnClickListener {
+    val fragment = TitleFragment()
+    val fragmentManager = activity!!.supportFragmentManager
+    val fragmentTransaction = fragmentManager.beginTransaction()
+    fragmentTransaction.replace(R.id.contaner, fragment)
+    fragmentTransaction.addToBackStack(null)
+    fragmentTransaction.commit()
+}*/
         return binding.root
     }
 }

@@ -58,6 +58,9 @@ dependencies {
     //circularImageView Library for showing images in circles
     implementation 'de.hdodenhof:circleimageview:3.0.0'
 
+    implementation"android.arch.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "android.arch.navigation:navigation-ui-ktx:$navigationVersion"
+    implementation "com.google.android.material:material:$supportlibVersion"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.android.material:material:1.2.0-alpha05'
