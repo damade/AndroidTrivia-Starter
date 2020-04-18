@@ -21,7 +21,8 @@ class TitleFragment : Fragment() {
         val btn = binding.playButton
 
         btn.setOnClickListener { view: View ->
-            view.findNavController().navigate(R.id.action_titleFragment_to_gameFragment)
+            view.findNavController()
+                    .navigate(TitleFragmentDirections.actionTitleFragmentToGameFragment())
             /*val fragment = GameFragment()
             val fragmentManager = activity!!.supportFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()

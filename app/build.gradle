@@ -15,7 +15,7 @@
  */
 
 apply plugin: 'com.android.application'
-
+apply plugin: 'androidx.navigation.safeargs'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-kapt'
@@ -57,6 +57,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     //circularImageView Library for showing images in circles
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+
 
     implementation"android.arch.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "android.arch.navigation:navigation-ui-ktx:$navigationVersion"

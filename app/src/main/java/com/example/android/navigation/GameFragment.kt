@@ -100,7 +100,8 @@ class GameFragment : Fragment() {
                         binding.invalidateAll()
                     } else {
                         view.findNavController()
-                                .navigate(R.id.action_gameFragment_to_gameWonFragment)
+                                .navigate(GameFragmentDirections
+                                        .actionGameFragmentToGameWonFragment(numQuestions, questionIndex))
                         /*val fragment = GameWonFragment()
                         val fragmentManager = activity!!.supportFragmentManager
                         val fragmentTransaction = fragmentManager.beginTransaction()
@@ -110,7 +111,9 @@ class GameFragment : Fragment() {
                         // We've won!  Navigate to the gameWonFragment.*/
                     }
                 } else {
-                    view.findNavController().navigate(R.id.action_gameFragment_to_gameOverFragment)
+                    view.findNavController()
+                            .navigate(GameFragmentDirections
+                                    .actionGameFragmentToGameOverFragment())
                     /*val fragment = GameOverFragment()
                     val fragmentManager = activity!!.supportFragmentManager
                     val fragmentTransaction = fragmentManager.beginTransaction()
